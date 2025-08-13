@@ -1,0 +1,24 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720'>
+  <defs>
+    <linearGradient id='bg' x1='0' y1='0' x2='0' y2='1'>
+      <stop offset='0' stop-color='#051635'/>
+      <stop offset='1' stop-color='#082840'/>
+    </linearGradient>
+    <radialGradient id='leaf' cx='50%' cy='40%'>
+      <stop offset='0' stop-color='#b6ffd9'/>
+      <stop offset='1' stop-color='#72f5c2'/>
+    </radialGradient>
+    <filter id='soft' x='-20%' y='-20%' width='140%' height='140%'>
+      <feGaussianBlur stdDeviation='10'/>
+    </filter>
+  </defs>
+  <rect width='1200' height='720' fill='url(#bg)'/>
+  <ellipse cx='600' cy='500' rx='320' ry='110' fill='rgba(255,255,255,0.05)'/>
+  <g transform='translate(600 360)'>
+    <g filter='url(#soft)'><circle cx='0' cy='-20' r='26' fill='#ffffff' opacity='0.9'/></g>
+    <path d='M-180 30 C-100 -120 100 -120 180 30 C100 10 -100 10 -180 30 Z' fill='url(#leaf)'/>
+    <path d='M-100 10 C-40 -60 40 -60 100 10 C40 5 -40 5 -100 10 Z' fill='#d6ffe9' opacity='0.9'/>
+    <circle cx='0' cy='-16' r='8' fill='#ffffff'/>
+  </g>
+  <text x='60' y='660' fill='#dfffee' font-family='Inter, system-ui, sans-serif' font-weight='800' font-size='54'>Luminous Lotus</text>
+</svg>

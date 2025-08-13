@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Luminous Lotus — A Minimal Phaser 3 Game</title>
+  <style>
+    html,body { height:100%; margin:0; background: linear-gradient(180deg,#071025 0%,#0b2040 60%,#0b2a3a 100%); font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:#e6f7ff }
+    #game-container { width:100%; height:100%; display:flex; align-items:center; justify-content:center }
+    .credits { position:fixed; left:12px; bottom:8px; font-size:12px; opacity:0.7 }
+    .instructions { position:fixed; left:12px; top:12px; max-width:520px; line-height:1.4; background:rgba(0,0,0,0.25); padding:10px 12px; border-radius:8px }
+    a { color:#a8e3ff }
+  </style>
+</head>
+<body>
+  <div class="instructions">
+    <strong>How to play</strong>: Use the mouse or touch to move the glowing lotus. Collect drifting motes to grow and score points. Avoid dark ripples — they shrink you. Survive as long as you can. Click / tap to start.
+  </div>
+  <div id="game-container"></div>
+  <div class="credits">Theme: Serene bioluminescence • Music & SFX: Royalty-free (links in README)</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

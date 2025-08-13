@@ -1,0 +1,31 @@
+<!doctype html>
+<!--
+Aurora Bloom
+Instructions: Use left/right arrow keys or A/D (or tap/click and drag) to move the glowing seed. Collect blooms to score points and survive as long as possible. Avoid dark shards — hitting one ends the run. Press Space to restart after a game over.
+
+Short play instructions are also shown in-game. Open this file in a browser to play locally.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aurora Bloom</title>
+    <style>
+      html,body{height:100%;margin:0;background:linear-gradient(180deg,#041022 0%,#071233 40%,#0b2140 100%);color:#dff7ff;font-family:Inter,Roboto,Helvetica,Arial,sans-serif}
+      /* full-viewport centered layout */
+      .game-wrapper{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box}
+      #game-container{width:100%;max-width:960px;height:640px;display:flex;align-items:center;justify-content:center;margin:0 auto;}
+      /* ensure Phaser canvas is centered and not selectable */
+      #game-container canvas{display:block;margin:0 auto;user-select:none;-webkit-user-select:none}
+      .credits{position:fixed;left:12px;bottom:12px;font-size:12px;opacity:0.9}
+    </style>
+  </head>
+  <body>
+  <div class="game-wrapper"><div id="game-container"></div></div>
+    <div class="credits">Aurora Bloom — A small Phaser 3 game. Controls: ← → or A / D. Tap to move on touch.</div>
+
+    <!-- Phaser 3 from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

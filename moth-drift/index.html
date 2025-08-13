@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bioluminescent Night Garden — Moth Drift</title>
+  <style>
+    html,body { height:100%; margin:0; background: #05030a; color: #dbe9ff; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+    #game-container { width:100%; height:100vh; display:flex; align-items:center; justify-content:center; }
+    .instructions { position: absolute; top:12px; left:12px; max-width:420px; background: rgba(10,8,16,0.45); padding:12px 14px; border-radius:10px; backdrop-filter: blur(6px); box-shadow: 0 6px 24px rgba(0,0,0,0.6); }
+    a { color:#9be7ff }
+    .credit { position: absolute; right:12px; bottom:12px; font-size:12px; opacity:0.85 }
+  </style>
+</head>
+<body>
+  <div class="instructions">
+    <strong>How to play — Bioluminescent Night Garden</strong>
+    <p>Guide a glowing moth through a shimmering night garden. Move with your mouse or touch: the moth will gently follow your pointer. Collect luminous pollen orbs to score points and build streaks. Avoid shadow predators — colliding with them ends the run. Survive as long as you can; score grows with time and orbs. Click/tap to start music and begin.</p>
+    <small>Controls: mouse/touch to move, arrow keys optionally. Tap/click once to enable audio.</small>
+  </div>
+
+  <div id="game-container"></div>
+
+  <div class="credit">Art: procedural shapes • Audio: royalty-free (links in README)</div>
+
+  <!-- Background music (will be started/stopped by the game). File is in the same folder. -->
+  <audio id="bg-music" src="main track with fx.mp3" preload="auto" loop style="display:none"></audio>
+
+  <!-- Phaser 3 CDN (stable compatible with createEmitter) -->
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+
+  <!-- Inline music control helpers: expose startGameMusic() and stopGameMusic() so the game's JS
+       can call them when the run starts/ends. A one-time user gesture listener tries to unlock audio
+       on the first tap/click so starting the music later will succeed in most browsers. -->
+  <script>
+    (function(){
+      const bg = document.getElementById('bg-music');
+      // Expose simple API for the game
+      window.startGameMusic = async function() {
+        if (!bg) return;
+        bg.loop = true;
+        try {
+          await bg.play();
+        } catch (err) {
+          // If play() fails, it's likely because no user gesture was received. Keep silent.
+          console.warn('startGameMusic: unable to play (user gesture required)', err);
+        }
+      };
+
+      window.stopGameMusic = function() {
+        if (!bg) return;
+        bg.pause();
+        try { bg.currentTime = 0; } catch (e) {}
+      };
+
+      // Try to unlock audio on first user interaction so later calls to startGameMusic succeed.
+      function unlockOnce() {
+        if (!bg) return;
+        // Try to play and immediately pause; this is a common unlock technique.
+        const p = bg.play();
+        if (p && p.then) {
+          p.then(() => { bg.pause(); bg.currentTime = 0; }).catch(() => {});
+        }
+        window.removeEventListener('pointerdown', unlockOnce);
+        window.removeEventListener('touchstart', unlockOnce);
+      }
+      window.addEventListener('pointerdown', unlockOnce, { once: true });
+      window.addEventListener('touchstart', unlockOnce, { once: true });
+    })();
+  </script>
+
+  <script src="main.js"></script>
+</body>
+</html>

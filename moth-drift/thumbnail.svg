@@ -1,0 +1,29 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 720'>
+  <defs>
+    <linearGradient id='night' x1='0' y1='0' x2='0' y2='1'>
+      <stop offset='0' stop-color='#03101A'/>
+      <stop offset='1' stop-color='#060A1A'/>
+    </linearGradient>
+    <radialGradient id='mglow' cx='50%' cy='45%'>
+      <stop offset='0' stop-color='#CFFAFF'/>
+      <stop offset='1' stop-color='rgba(207,250,255,0)'/>
+    </radialGradient>
+    <filter id='blurS' x='-20%' y='-20%' width='140%' height='140%'>
+      <feGaussianBlur stdDeviation='10'/>
+    </filter>
+  </defs>
+  <rect width='1200' height='720' fill='url(#night)'/>
+  <g opacity='0.2' stroke='#7be3ff'>
+    <path d='M80 580 C240 470 440 470 620 560' fill='none' stroke-width='10'/>
+    <path d='M620 560 C840 490 1020 500 1120 560' fill='none' stroke-width='10'/>
+  </g>
+  <g transform='translate(680 280)'>
+    <g filter='url(#blurS)'><circle cx='0' cy='0' r='36' fill='url(#mglow)'/></g>
+    <ellipse cx='-44' cy='4' rx='60' ry='38' fill='#A9F0FF' opacity='0.95'/>
+    <ellipse cx='44' cy='4' rx='60' ry='38' fill='#A9F0FF' opacity='0.95'/>
+    <ellipse cx='0' cy='24' rx='72' ry='46' fill='#E7FDFF' opacity='0.92'/>
+  </g>
+  <circle cx='980' cy='180' r='18' fill='#9fe9ff' opacity='0.7'/>
+  <circle cx='900' cy='260' r='12' fill='#a8eaff' opacity='0.6'/>
+  <text x='60' y='660' fill='#bfeaff' font-family='Inter, system-ui, sans-serif' font-weight='800' font-size='54'>Moth Drift</text>
+</svg>
